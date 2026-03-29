@@ -1,0 +1,44 @@
+<% layout("layouts/boilerplate") %>
+<body>
+
+    <div class="row">
+    <div class="col-8 offset-2">
+        <h3>Edit Your Listing</h3>
+    <form method="POST" action="/listings/<%= list._id %>?_method=PUT" class="needs-validation" novalidate>
+    <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" name="listing[title]" class="form-control" value="<%=list.title%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Title</div>
+    </div>
+    <div class="mb-3">
+     <label for="description" class="form-label">Description</label>
+    <input type="text" name="listing[description]"  class="form-control" value="<%=list.description%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Description</div>
+    </div>
+    <div class="mb-3">
+    <label for="image" class="form-label">image</label>
+    <input type="text" name="listing[image][url]" class="form-control" value="<%=list.image.url%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Image URL</div>
+    </div>
+    <div class="mb-3">
+    <label for="price" class="form-label">price</label>
+    <input type="number" name="listing[price]" class="form-control" value="<%=list.price%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Price</div>
+    </div>
+    <div class="mb-3">
+    <label for="location" class="form-label">Location</label>
+    <input type="text" name="listing[location]" class="form-control" value="<%=list.location%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Location</div>
+    </div>
+    <div class="mb-3">
+    <label for="country" class="form-label">Country</label>
+    <input type="text" name="listing[country]"  class="form-control" value="<%=list.country%>" required/>
+    <div id="validationServerUsernameFeedback" class="invalid-feedback">Update the Country</div>
+    </div>
+    <br/>
+    <button class="btn btn-dark">Update</button>
+    </div>
+    </div>
+</form>
+<script src="/js/script.js"></script>
+</body>
