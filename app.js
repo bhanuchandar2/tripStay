@@ -11,6 +11,7 @@ const methodOverride=require('method-override')
 const listingRouter=require("./router/listingRouter.js")
 const reviewRouter=require("./router/reviewsRouter.js")
 const userRouter=require("./router/userRouter.js")
+const bookingRouter=require("./router/bookingRouter.js")
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport=require("passport")
@@ -52,12 +53,14 @@ app.use((req,res,next)=>{
 app.use("/listings",listingRouter)
 app.use('/reviews',reviewRouter)
 app.use("/user",userRouter)
+app.use("/booking",bookingRouter)
 
 mongoose.connect(process.env.MONGO_URL)
 .then(console.log("succesfully connected to db"))
 .catch(err=>console.log(err))
 
 app.use((err,req,res,next)=>{
+    console.log(err)
     let{status=500,message="something went wrong"}=err;
     res.status(404).render("listings/error.ejs",{message})
 })

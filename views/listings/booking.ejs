@@ -1,0 +1,213 @@
+<!-- 
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-4">
+
+<div class="card col-8 offset-2 shadow">
+
+<div class="card-body">
+
+<h2 class="text-success text-center">
+
+🎉 Booking Confirmed!
+
+</h2>
+
+<hr>
+
+<img src="<%= listing.image.url %>"
+
+class="img-fluid rounded mb-3"
+
+style="height:300px; width:100%; object-fit:cover;">
+
+<h3><%= listing.title %></h3>
+
+<p class="text-muted">
+
+<%= listing.location %>, <%= listing.country %>
+
+</p>
+
+<hr>
+
+<h5>Booking Details</h5>
+
+<p>
+
+<strong>Check-in:</strong>
+
+<%= new Date(booking.checkin).toDateString() %>
+
+</p>
+
+<p>
+
+<strong>Check-out:</strong>
+
+<%= new Date(booking.checkout).toDateString() %>
+
+</p>
+
+<p>
+
+<strong>Total Price:</strong>
+
+₹<%= Number(booking.totalPrice).toLocaleString("en-IN") %>
+
+</p>
+
+<hr>
+
+<div class="text-center">
+
+<a href="/listings" class="btn btn-dark">
+
+Back to Listings
+
+</a>
+
+<a href="/listings/<%= listing._id %>" class="btn btn-outline-dark">
+
+View Listing
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div> -->
+<% layout("layouts/boilerplate") %>
+
+<div class="container py-5">
+
+<div class="row justify-content-center">
+
+<div class="col-lg-9">
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+
+<div class="card-body text-center py-4 bg-light">
+
+<h1 class="text-success fw-bold mb-0">🎉 Booking Confirmed!</h1>
+
+<p class="text-muted mt-2 mb-0">Your stay has been successfully reserved</p>
+
+</div>
+
+<img src="<%= listing.image.url %>"
+
+class="w-100"
+
+style="height: 420px; object-fit: cover;"
+
+alt="<%= listing.title %>">
+
+<div class="card-body p-5">
+
+<div class="mb-4">
+
+<h2 class="fw-bold mb-2"><%= listing.title %></h2>
+
+<p class="text-muted fs-5 mb-0">
+
+📍 <%= listing.location %>, <%= listing.country %>
+
+</p>
+
+</div>
+
+<hr class="my-4">
+
+<h4 class="fw-bold mb-4">Booking Details</h4>
+
+<div class="row g-4">
+
+<div class="col-md-6">
+
+<div class="border rounded-4 p-4 h-100 bg-light">
+
+<p class="text-muted text-uppercase small fw-semibold mb-2">Check-in</p>
+
+<h5 class="fw-bold mb-0"><%= new Date(booking.checkin).toDateString() %></h5>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="border rounded-4 p-4 h-100 bg-light">
+
+<p class="text-muted text-uppercase small fw-semibold mb-2">Check-out</p>
+
+<h5 class="fw-bold mb-0"><%= new Date(booking.checkout).toDateString() %></h5>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="border rounded-4 p-4 mt-4 bg-success bg-opacity-10">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+
+<p class="text-muted text-uppercase small fw-semibold mb-1">Total Price</p>
+
+<h3 class="fw-bold text-success mb-0">
+
+₹<%= Number(booking.totalPrice).toLocaleString("en-IN") %>
+
+</h3>
+
+</div>
+
+<div class="text-end">
+
+<p class="small text-muted mb-1">Price per night</p>
+
+<p class="fw-semibold mb-0">
+
+₹<%= Number(listing.price).toLocaleString("en-IN") %>
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="d-flex flex-column flex-md-row gap-3 justify-content-center mt-5">
+
+<a href="/listings" class="btn btn-dark btn-lg px-5 rounded-3">
+
+Back to Listings
+
+</a>
+
+<a href="/listings/<%= listing._id %>"
+
+class="btn btn-outline-dark btn-lg px-5 rounded-3">
+
+View Listing
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>

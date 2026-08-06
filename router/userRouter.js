@@ -5,6 +5,7 @@ const passport=require("passport")
 const User=require("../models/user")
 const wrapAsync = require("../utils/wrapAsync")
 const {redirectUrl}=require("../middleware.js")
+
 router.get("/signup",async(req,res)=>{
     res.render("user/registerform.ejs")
 })
@@ -47,7 +48,6 @@ router.get("/logout",async(req,res,next)=>{
         req.flash("success"," Succesfully Logout")
         res.redirect("/listings")
     })
-    
 })
 router.get("/getusers",async(req,res)=>{
     try{

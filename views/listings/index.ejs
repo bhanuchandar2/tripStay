@@ -1,5 +1,37 @@
 <% layout("layouts/boilerplate") %>
+<style>
+  .filters i{
+    opacity: 0.7;
+  }
+    .filters i:hover{
+    opacity: 1;
+  }
+</style>
+    <div  class="mt-3" id="filters">
+      <div id="filter" class="ms-auto">
+        <div class="filters ">
+        <a href="/listings/fetch/Rooms"><i class="fa-solid fa-house"></i></a>
+        <p>Rooms</p>
+       </div> 
+  
     
+      <div class="filters">
+        <a href="/listings/fetch/trending"><i class="fa-solid fa-fire"></i></a>
+        <p>Trending</p>
+      </div> 
+      <div class="filters">
+        <a href="/listings/fetch/mountains"><i class="fa-solid fa-mountain"></i></i></a>
+        <p>Mountains</p>
+      </div> 
+      <div class="filters">
+        <a href="/listings/fetch/mountains"><i class="fa-solid fa-city"></i></a>
+        <p>city</p>
+      </div> 
+      <div class="filters">
+        <a href="/listings/fetch/mountains"><i class="fa-solid fa-mountain"></i></i></a>
+        <p>Mountains</p>
+      </div> 
+    </div>
       <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
           <%for(let listing of allListings){ %>
         
@@ -10,12 +42,13 @@
   <div class="card-body">
     <p class="card-text">
         <b><%=listing.title%></b><br/>
-        <%=listing.price%>
+        <!-- <%=listing.price%> -->
+        ₹<%= listing.price.toLocaleString("en-IN") %> /night
     </p>
     </a>
   </div>
   </div>
-       <%}%>
+      <%}%>
       </div>
     
    

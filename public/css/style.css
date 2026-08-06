@@ -17,6 +17,10 @@ a {
     color:#fe424d;
     font-size:2rem;
 }
+.fa-solid {
+    font-size: 2rem;
+    color: black;
+}
 .navlink{
     color:#222222;
 }
@@ -56,6 +60,7 @@ a {
 }
 .card-text{
     font-weight:400;
+    color:black;
 }
 .card-img-overlay{
     opacity:0;
@@ -70,9 +75,42 @@ a {
 .show-img{
     height:30vh;
 }
-.btns{
-    display:flex;
-}
+
 .edit-btn{
     color:#fe424d;
+}
+/* #filter{
+    display:flex;
+    flex:wrap;
+    
+}
+.filter{
+    margin:20px;
+    display:flex;
+    justify-content: center;
+} */
+#filter {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.filters {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.booking{
+    margin-left: 120px;
+}
+.btns {
+display: flex;
+gap: 15px;
+align-items: flex-start;
+}
+
+.booking {
+width: 260px;
 }

@@ -5,7 +5,7 @@
         <h3>Create New Listing</h3>
         <br/>
         
-    <form  method="POST" action="/listings/newpost" class="needs-validation" novalidate  >
+    <form  method="POST" action="/listings/newpost" class="needs-validation" novalidate enctype="multipart/form-data" >
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
         <input 
@@ -28,10 +28,20 @@
              ></textarea>
             <div id="validationServerUsernameFeedback" class="invalid-feedback">Enter short Description</div>
         </div>
-        <div class="mb-3">
+        <!-- <div class="mb-3">
             <label for="image" class="form-label">Image</label>
             <input 
             type="text" 
+            name="listing[image]"  
+            placeholder="enter the image url" 
+            class="form-control" 
+            required/>
+            <div id="validationServerUsernameFeedback" class="invalid-feedback">Enter the image URL</div>
+        </div> -->
+        <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input 
+            type="file" 
             name="listing[image]"  
             placeholder="enter the image url" 
             class="form-control" 
@@ -67,6 +77,18 @@
         required/>
         <div id="validationServerUsernameFeedback" class="invalid-feedback">Please Enter the Country</div>
         </div>
+  <div class="mb-3">
+  <label for="category" class="form-label">Category</label>
+
+  <select name="listing[category]" id="category" class="form-select" required>
+    <option value="">Select Category</option>
+    <option value="Apartment">Apartment</option>
+    <option value="Villa">Villa</option>
+    <option value="Hotel">Hotel</option>
+    <option value="trending">trending</option>
+    <option value="Rooms">Room</option>
+  </select>
+</div>
         <button class="btn btn-dark">Add</button>
     </form>
     

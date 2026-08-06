@@ -11,8 +11,8 @@ const Listing=new mongoose.Schema(
             required:true
         },
         image: {
-    filename: String,
-    url: String
+       filename: String,
+       url: String
   },
         price:{
             type:Number,
@@ -23,6 +23,10 @@ const Listing=new mongoose.Schema(
         },
         country:{
             type:String
+        },
+        category:{
+            type:String,
+            enum:["Rooms","trending","mountains"]
         },
         reviews:[
             {
