@@ -5,6 +5,7 @@ const Booking = require("../models/booking");
 const {isLoggedIn}=require("../middleware.js")
 const {redirectUrl}=require("../middleware.js")
 const Listing=require("../models/listing")
+const sendBookingEmail = require("../utils/sendEmail");
 // CREATE BOOKING
 router.get("/:id", async (req, res) => {
     res.redirect(`/listings/${req.params.id}`);
@@ -17,7 +18,7 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
         console.log("userrr",req.user)
         // Check for overlapping bookings
         const existingBooking = await Booking.findOne({
-            listingid,
+            listing:listingid,
             checkin: { $lt: new Date(checkout) },
             checkout: { $gt: new Date(checkin) }
         });
@@ -31,25 +32,43 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
             user,
             checkin,
             checkout,
-            listingid,
+            listing:listingid,
             totalPrice
         });
         // console.log("booking",newBooking);
         const listing = await Listing.findById(listingid)
 
+        // const curruser = await User.findById(req.user._id);
+        // curruser.bookings.push(newBooking._id);
+        // await curruser.save();
+        // await newBooking.save();
+        // req.flash("success","Succesfully booked")
+        // res.render("listings/booking.ejs", {
+        // booking: newBooking,listing
+
+        await newBooking.save();
+
         const curruser = await User.findById(req.user._id);
         curruser.bookings.push(newBooking._id);
         await curruser.save();
-        await newBooking.save();
-        req.flash("success","Succesfully booked")
-        res.render("listings/booking.ejs", {
-        booking: newBooking,listing
 
-});
+        //email
+        await sendBookingEmail(curruser.email, {
+            username: curruser.username,
+            title: listing.title,
+            checkin: checkin,
+            checkout: checkout,
+            totalPrice: totalPrice
+        });
+
+        res.render("listings/booking.ejs", {
+        booking: newBooking,
+        listing})
+}
 
     
 
-    } catch (err) {
+catch (err) {
         res.status(500).json({
             error: err.message
         });
@@ -57,12 +76,31 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
 });
 
 // get bookings
-router.get("/:id/show",async(req,res)=>{
-    console.log(req.params.id)
-    const user=await User.findById(req.params.id);
-    const bookings=await user.populate("bookings");
-    res.send(bookings)
-})
+// router.get("/:id/show",async(req,res)=>{
+//     console.log(req.params.id)
+//     const user=await User.findById(req.params.id);
+//     const bookings=await user.populate("bookings");
+//     res.render("listings/myBookings.ejs",{
+//         bookings:user.bookings,
+
+//     })
+// })
+
+router.get("/:id/show", async (req, res) => {
+    const user = await User.findById(req.params.id)
+        .populate({
+            path: "bookings",
+            populate: {
+                path: "listing"
+            }
+        });
+
+    res.render("listings/myBookings.ejs", {
+        bookings: user.bookings
+    });
+});
+
+
 // // DELETE BOOKING
 // router.delete("/:id", async (req, res) => {
 //     try {

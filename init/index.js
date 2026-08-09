@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 const Listing = require("../models/listing");
-const initdata = require('./data'); // your file exporting { data: [...] }
+const initdata = require('./realdata'); // your file exporting { data: [...] }
 const dotenv=require("dotenv").config({ path: "../.env" });
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("Successfully connected to DB"))

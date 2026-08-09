@@ -12,6 +12,12 @@ const multer  = require('multer')
 const {storage}=require('../cloudinaryConfig.js')
 const upload = multer({ storage })
 
+
+// const mbxGecoding= require('@mapbox/mapbox-sdk/services/tilesets/geocoding');
+const mbxGeocoding = require("@mapbox/mapbox-sdk/services/geocoding");
+const mapToken = process.env.MAPBOX
+const geocodingClient = mbxGeocoding({ accessToken: mapToken });
+
 router.get("/",wrapAsync(async(req,res)=>{
     
     const allListings=await listing.find({}).populate("reviews").populate("owner");
@@ -43,7 +49,14 @@ router.get("/new",isLoggedIn,async(req,res)=>{
 //add new listing
 router.post("/newpost",upload.single('listing[image]'),
     isLoggedIn,wrapAsync(async(req,res)=>{
-    console.log(req.body)
+
+    const response=await geocodingClient.forwardGeocode({
+    query: req.body.listing.location,
+    limit: 1
+    })
+    .send()
+    
+  
     let url=req.file.path
     let filename=req.file.filename
     const result=listingSchema.validate(req.body)
@@ -52,13 +65,14 @@ router.post("/newpost",upload.single('listing[image]'),
         throw new ExpressError(500,msg)
     }
     const newpost=new listing(req.body.listing)
-    console.log(newpost)
+    
     newpost.owner=req.user._id;
-    console.log(url)
-    console.log(filename)
+    
+    
     newpost.image={url,filename}
+    newpost.geometry=response.body.features[0].geometry;
     await newpost.save();
-    console.log(req.body.listing);
+    
     req.flash("success","Succesfully Added")
     res.redirect("/listings")
 })

@@ -34,7 +34,18 @@ const Listing=new mongoose.Schema(
                 ref:"Review"
             }
         ],
-        owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
+        owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+        geometry: {
+            type: {
+            type: String, // Don't do `{ location: { type: String } }`
+            enum: ['Point'], // 'location.type' must be 'Point'
+            required: true
+            },
+        coordinates: {
+        type: [Number],
+        required: true
+        }
+  }
     }
 )
 Listing.post("findOneAndDelete",async(doc)=>{

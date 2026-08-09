@@ -1,0 +1,235 @@
+<!-- <div class="my-bookings-grid">
+
+    <% bookings.forEach((booking) => { %>
+
+        <div class="my-booking-card">
+
+            <% if (booking.listing && booking.listing.image) { %>
+
+                <div class="my-booking-image-wrapper">
+
+                    <img
+                        src="<%= booking.listing.image.url %>"
+                        class="my-booking-image"
+                        alt="<%= booking.listing.title %>"
+                    >
+
+                    <span class="my-booking-status">
+                        ✓ Confirmed
+                    </span>
+
+                </div>
+
+            <% } %>
+
+            <div class="my-booking-content">
+
+                <% if (booking.listing) { %>
+
+                    <h3 class="my-booking-title">
+                        <%= booking.listing.title %>
+                    </h3>
+
+                    <p class="my-booking-location">
+                        📍 <%= booking.listing.location %>,
+                        <%= booking.listing.country %>
+                    </p>
+
+                    <p class="my-booking-description">
+                        <%= booking.listing.description %>
+                    </p>
+
+                    <div class="my-booking-price">
+                        ₹<%= Number(booking.listing.price).toLocaleString("en-IN") %>
+                        <span>/ night</span>
+                    </div>
+
+                <% } %>
+
+                <div class="my-booking-divider"></div>
+
+                <h4 class="my-booking-details-title">
+                    Booking Details
+                </h4>
+
+                <div class="my-booking-details">
+
+                    <div class="my-booking-detail">
+                        <span>Check-in</span>
+
+                        <strong>
+                            <%= new Date(booking.checkin).toDateString() %>
+                        </strong>
+                    </div>
+
+                    <div class="my-booking-detail">
+                        <span>Check-out</span>
+
+                        <strong>
+                            <%= new Date(booking.checkout).toDateString() %>
+                        </strong>
+                    </div>
+
+                </div>
+
+                <div class="my-booking-id">
+
+                    <span>Booking ID</span>
+
+                    <small>
+                        <%= booking._id %>
+                    </small>
+
+                </div>
+
+                <% if (booking.listing) { %>
+
+                    <a
+                        href="/listings/<%= booking.listing._id %>"
+                        class="my-booking-view-btn"
+                    >
+                        View Listing
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </a>
+
+                <% } %>
+
+            </div>
+
+        </div>
+
+    <% }) %>
+
+</div> -->
+
+
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+    <% bookings.forEach((booking) => { %>
+
+        <% if (booking.listing) { %>
+
+            <div class="col">
+
+                <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden">
+
+                    <!-- IMAGE -->
+                    <% if (booking.listing.image) { %>
+
+                        <div style="height: 220px; position: relative;">
+
+                            <img
+                                src="<%= booking.listing.image.url %>"
+                                style="width:50%; height: 100%; object-fit: cover;"
+                                alt="<%= booking.listing.title %>"
+                            >
+
+                            <span
+                                class="badge bg-success position-absolute top-0 end-0 m-3"
+                            >
+                                ✓ Confirmed
+                            </span>
+
+                        </div>
+
+                    <% } %>
+
+
+                    <!-- CARD BODY -->
+
+                    <div class="card-body p-4">
+
+                        <h4 class="card-title fw-bold">
+                            <%= booking.listing.title %>
+                        </h4>
+
+
+                        <p class="text-muted mb-2">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <%= booking.listing.location %>,
+                            <%= booking.listing.country %>
+                        </p>
+
+
+                        <p class="text-secondary small">
+                            <%= booking.listing.description %>
+                        </p>
+
+
+                        <h5 class="fw-bold">
+                            ₹<%= Number(booking.listing.price).toLocaleString("en-IN") %>
+                            <small class="text-muted fw-normal">
+                                / night
+                            </small>
+                        </h5>
+
+
+                        <hr>
+
+
+                        <!-- BOOKING DETAILS -->
+
+                        <h6 class="fw-bold mb-3">
+                            Booking Details
+                        </h6>
+
+
+                        <div class="mb-2">
+
+                            <small class="text-muted d-block">
+                                Check-in
+                            </small>
+
+                            <strong>
+                                <%= new Date(booking.checkin).toDateString() %>
+                            </strong>
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <small class="text-muted d-block">
+                                Check-out
+                            </small>
+
+                            <strong>
+                                <%= new Date(booking.checkout).toDateString() %>
+                            </strong>
+
+                        </div>
+
+
+                        <!-- BOOKING ID -->
+
+                        <small class="text-muted">
+                            Booking ID
+                        </small>
+
+                        <div class="small text-secondary text-break mb-3">
+                            <%= booking._id %>
+                        </div>
+
+
+                        <!-- BUTTON -->
+
+                        <a
+                            href="/listings/<%= booking.listing._id %>"
+                            class="btn btn-outline-dark w-100"
+                        >
+                            View Listing
+                            <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        <% } %>
+
+    <% }) %>
+
+</div>

@@ -13,10 +13,15 @@ const Booking=new mongoose.Schema({
         type:Date,
         required:true
     },
-    listingid:{
-        type:String,
-        required:true
-    }
+    // listingid:{
+    //     type:String,
+    //     required:true
+    // }
+    listing: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "listing",
+    required: true
+}
 })
 const booking=mongoose.model('booking',Booking)
 module.exports=booking

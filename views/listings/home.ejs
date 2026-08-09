@@ -1,0 +1,366 @@
+<% layout("layouts/boilerplate") %>
+
+<div class="container mt-5 home-page">
+
+    <!-- ================= HERO ================= -->
+
+    <div class="hero-section">
+
+        <div class="hero-content">
+
+            <h1>
+                Welcome to TripStay
+            </h1>
+
+            <p>
+                Find unique places to stay and make your next trip memorable.
+            </p>
+
+            <a href="/listings" class="btn btn-danger btn-lg">
+                Explore Stays
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= SEARCH ================= -->
+
+    <div class="search-card">
+
+        <h3 class="text-center">
+            Find your perfect stay
+        </h3>
+
+        <form action="/listings" method="GET">
+
+            <div class="row g-3">
+
+                <!-- Location -->
+
+                <div class="col-md-4">
+
+                    <label class="form-label">
+                        Where
+                    </label>
+
+                    <input
+                        type="text"
+                        name="location"
+                        class="form-control"
+                        placeholder="Enter a location"
+                    >
+
+                </div>
+
+
+                <!-- Check-in -->
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Check-in
+                    </label>
+
+                    <input
+                        type="date"
+                        name="checkin"
+                        class="form-control"
+                    >
+
+                </div>
+
+
+                <!-- Check-out -->
+
+                <div class="col-md-3">
+
+                    <label class="form-label">
+                        Check-out
+                    </label>
+
+                    <input
+                        type="date"
+                        name="checkout"
+                        class="form-control"
+                    >
+
+                </div>
+
+
+                <!-- Search Button -->
+
+                <div class="col-md-2 d-flex align-items-end">
+
+                    <button
+                        type="submit"
+                        class="btn btn-danger w-100">
+
+                        Search
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+    <!-- ================= WHY TRIPSTAY ================= -->
+
+    <div class="mt-5">
+
+        <h2 class="section-heading text-center">
+            Why TripStay?
+        </h2>
+
+
+        <div class="row g-4 mb-5">
+
+
+            <!-- Great Places -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="icon">
+                        🏠
+                    </div>
+
+                    <h4>
+                        Great Places
+                    </h4>
+
+                    <p>
+                        Discover comfortable homes and unique
+                        places to stay.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Easy Booking -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="icon">
+                        🔐
+                    </div>
+
+                    <h4>
+                        Easy Booking
+                    </h4>
+
+                    <p>
+                        Reserve your favorite place with a
+                        simple and secure booking process.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Email Confirmation -->
+
+            <div class="col-md-4">
+
+                <div class="feature-card">
+
+                    <div class="icon">
+                        📧
+                    </div>
+
+                    <h4>
+                        Booking Confirmation
+                    </h4>
+
+                    <p>
+                        Receive an email confirmation after
+                        successfully booking your stay.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= POPULAR LOCATIONS ================= -->
+
+    <div class="mt-5">
+
+        <h2 class="section-heading">
+            Explore Popular Locations
+        </h2>
+
+
+        <div class="row g-4">
+
+
+            <!-- Hyderabad -->
+
+            <div class="col-md-3">
+
+                <div class="location-card h-100">
+
+                    <div class="card-body">
+
+                        <h4>
+                            Hyderabad
+                        </h4>
+
+                        <p>
+                            Explore stays in Hyderabad.
+                        </p>
+
+                        <a
+                            href="/listings?location=Hyderabad"
+                            class="btn btn-outline-danger">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Goa -->
+
+            <div class="col-md-3">
+
+                <div class="location-card h-100">
+
+                    <div class="card-body">
+
+                        <h4>
+                            Goa
+                        </h4>
+
+                        <p>
+                            Find beautiful stays near the beach.
+                        </p>
+
+                        <a
+                            href="/listings?location=Goa"
+                            class="btn btn-outline-danger">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bangalore -->
+
+            <div class="col-md-3">
+
+                <div class="location-card h-100">
+
+                    <div class="card-body">
+
+                        <h4>
+                            Bangalore
+                        </h4>
+
+                        <p>
+                            Discover stays in Bangalore.
+                        </p>
+
+                        <a
+                            href="/listings?location=Bangalore"
+                            class="btn btn-outline-danger">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Mumbai -->
+
+            <div class="col-md-3">
+
+                <div class="location-card h-100">
+
+                    <div class="card-body">
+
+                        <h4>
+                            Mumbai
+                        </h4>
+
+                        <p>
+                            Experience Mumbai with TripStay.
+                        </p>
+
+                        <a
+                            href="/listings?location=Mumbai"
+                            class="btn btn-outline-danger">
+
+                            Explore
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= FINAL CTA ================= -->
+
+    <div class="bottom-cta">
+
+        <h2>
+            Ready to find your next stay?
+        </h2>
+
+        <p>
+            Browse our listings and discover your next destination.
+        </p>
+
+        <a
+            href="/listings"
+            class="btn btn-danger btn-lg">
+
+            Browse Listings
+
+        </a>
+
+    </div>
+
+
+</div>

@@ -102,15 +102,343 @@ a {
     flex-direction: column;
     align-items: center;
 }
-.booking{
-    margin-left: 120px;
+
+
+
+/* .btns {
+    display: flex;
+    gap: 15px;
+    align-items: center;
 }
-.btns {
-display: flex;
-gap: 15px;
-align-items: flex-start;
-}
+
+.btns form {
+    margin: 0;
+} */
+
 
 .booking {
 width: 260px;
+}
+
+
+.btns {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.btns .btn {
+    width: 80px;
+    text-align: center;
+}
+
+.btns form {
+    margin: 0;
+}
+
+
+/* My Bookings - 3 cards per row */
+
+.my-bookings-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 30px !important;
+    width: 100% !important;
+}
+
+.my-booking-card {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+    .my-bookings-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+    .my-bookings-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+
+/* map */
+#map{
+    height:400px;
+    width: 600px;
+}
+
+
+
+
+/* home */
+
+/* =========================
+   TRIPSTAY HOME PAGE
+========================= */
+
+.home-page {
+    padding-bottom: 60px;
+}
+
+
+/* HERO */
+
+.hero-section {
+    min-height: 430px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    color: white;
+
+    border-radius: 25px;
+
+    background-image:
+        linear-gradient(
+            rgba(0, 0, 0, 0.40),
+            rgba(0, 0, 0, 0.40)
+        ),
+        url("https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+
+    overflow: hidden;
+}
+
+
+.hero-content {
+    max-width: 800px;
+    padding: 30px;
+}
+
+
+.hero-content h1 {
+    font-size: 58px;
+    font-weight: 700;
+
+    margin-bottom: 20px;
+}
+
+
+.hero-content p {
+    font-size: 20px;
+
+    margin-bottom: 30px;
+}
+
+
+/* BUTTON */
+
+.home-page .btn-danger {
+    background-color: #ff385c;
+    border-color: #ff385c;
+}
+
+
+.home-page .btn-danger:hover {
+    background-color: #e61e4d;
+    border-color: #e61e4d;
+}
+
+
+/* SEARCH */
+
+.search-card {
+    position: relative;
+
+    margin: -40px 20px 0;
+
+    z-index: 5;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+.search-card h3 {
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+
+.search-card label {
+    font-weight: 600;
+}
+
+
+.search-card input {
+    height: 48px;
+
+    border-radius: 12px;
+
+    border: 1px solid #ddd;
+}
+
+
+.search-card input:focus {
+    border-color: #ff385c;
+
+    box-shadow: 0 0 0 3px rgba(255, 56, 92, 0.12);
+}
+
+
+/* SECTION HEADINGS */
+
+.section-heading {
+    font-size: 32px;
+    font-weight: 700;
+
+    margin-bottom: 30px;
+}
+
+
+/* FEATURE CARDS */
+
+.feature-card {
+    height: 100%;
+
+    padding: 35px 25px;
+
+    text-align: center;
+
+    background: white;
+
+    border-radius: 18px;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+.feature-card:hover {
+    transform: translateY(-8px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.14);
+}
+
+
+.feature-card .icon {
+    font-size: 42px;
+
+    margin-bottom: 15px;
+}
+
+
+.feature-card h4 {
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.feature-card p {
+    color: #717171;
+
+    line-height: 1.6;
+}
+
+
+/* LOCATION CARDS */
+
+.location-card {
+    border: none;
+
+    border-radius: 18px;
+
+    background: white;
+
+    overflow: hidden;
+
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+}
+
+
+.location-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.13);
+}
+
+
+.location-card .card-body {
+    padding: 25px;
+}
+
+
+.location-card h4 {
+    font-weight: 600;
+}
+
+
+.location-card p {
+    color: #717171;
+}
+
+
+/* BOTTOM CTA */
+
+.bottom-cta {
+    margin-top: 80px;
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background: #f7f7f7;
+}
+
+
+.bottom-cta h2 {
+    font-size: 36px;
+
+    font-weight: 700;
+}
+
+
+.bottom-cta p {
+    color: #717171;
+
+    margin: 15px 0 25px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+
+    .hero-section {
+        min-height: 350px;
+    }
+
+    .hero-content h1 {
+        font-size: 38px;
+    }
+
+    .hero-content p {
+        font-size: 17px;
+    }
+
+    .search-card {
+        margin: 20px 0 0;
+    }
+
 }

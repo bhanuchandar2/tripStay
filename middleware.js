@@ -3,8 +3,6 @@ module.exports.isLoggedIn=(req,res,next)=>{
     
     if(!req.isAuthenticated()){
         req.session.originalUrl=req.originalUrl;
-        console.log(req.session.originalUrl);
-        console.log(req.user)
         req.flash("error","please login")
         return res.redirect("/user/login")
     }
