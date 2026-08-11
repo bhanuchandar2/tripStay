@@ -161,8 +161,17 @@ alt="<%= listing.title %>">
 <p class="text-muted text-uppercase small fw-semibold mb-1">Total Price</p>
 
 <h3 class="fw-bold text-success mb-0">
+<%
+    const checkin = new Date(booking.checkin);
+    const checkout = new Date(booking.checkout);
 
-₹<%= Number(booking.totalPrice).toLocaleString("en-IN") %>
+    const nights = Math.ceil(
+        (checkout - checkin) / (1000 * 60 * 60 * 24)
+    );
+
+    const totalPrice = nights * Number(listing.price);
+%>
+₹<%= totalPrice.toLocaleString("en-IN") %>
 
 </h3>
 

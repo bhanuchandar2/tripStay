@@ -55,8 +55,11 @@ a {
  width:100% !important;
  object-fit:cover !important;
 }
-.card-body{
+/* .card-body{
     padding:0 !important;
+} */
+ .listing-card .card-body{
+padding:0 !important;
 }
 .card-text{
     font-weight:400;
@@ -103,6 +106,31 @@ a {
     align-items: center;
 }
 
+
+#filter {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    width: 100%;
+    overflow-x: auto;
+    gap: 25px;
+    padding: 10px 5px;
+}
+
+.filters {
+    flex: 0 0 auto;
+    width: 70px;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.filters p {
+    margin: 5px 0 0;
+    white-space: nowrap;
+    font-size: 14px;
+}
 
 
 /* .btns {
@@ -382,6 +410,7 @@ width: 260px;
 }
 
 
+
 .location-card h4 {
     font-weight: 600;
 }
@@ -421,9 +450,33 @@ width: 260px;
 }
 
 
+
+
 /* RESPONSIVE */
 
 @media (max-width: 768px) {
+
+
+
+        #filter {
+        gap: 20px;
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+
+    .filters {
+        width: 70px;
+        flex: 0 0 70px;
+    }
+
+    .filters i {
+        font-size: 1.5rem;
+    }
+
+    .filters p {
+        font-size: 13px;
+    }
+
 
     .hero-section {
         min-height: 350px;
