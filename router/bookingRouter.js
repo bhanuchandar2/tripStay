@@ -57,12 +57,7 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
         res.render("listings/booking.ejs", {
         booking: newBooking,
         listing})
-        res.render("listings/booking.ejs", {
-    booking: newBooking,
-    listing
-});
-
-sendBookingEmail(curruser.email, {
+        sendBookingEmail(curruser.email, {
     username: curruser.username,
     title: listing.title,
     checkin: checkin,
