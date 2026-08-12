@@ -8,6 +8,14 @@ const transporter = nodemailer.createTransport({
     }
 });
 
+transporter.verify((error, success) => {
+    if (error) {
+        console.log("❌ SMTP connection failed:", error.message);
+    } else {
+        console.log("✅ SMTP connection successful");
+    }
+});
+
 async function sendBookingEmail(to, bookingDetails) {
     
     try {
@@ -37,9 +45,10 @@ async function sendBookingEmail(to, bookingDetails) {
         console.log("Message ID:", info.messageId);
 
     } catch (error) {
-        console.log("❌ Email sending failed!");
-        console.log(error);
-    }
+    console.log("❌ Email sending failed!");
+    console.log(error);
+    throw error;
+}
 }
 
 module.exports = sendBookingEmail;
