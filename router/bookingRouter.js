@@ -54,29 +54,27 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
 
         //email
         
-        res.render("listings/booking.ejs", {
-        booking: newBooking,
-        listing})
-        console.log("📧 Starting email...");
+        // Email
+console.log("📧 Starting email...");
 console.log("📧 Sending to:", curruser.email);
 
-sendBookingEmail(curruser.email, {
+await sendBookingEmail(curruser.email, {
     username: curruser.username,
     title: listing.title,
     checkin: checkin,
     checkout: checkout,
     totalPrice: totalPrice
-})
-.then(() => {
-    console.log("📧 Email function completed");
-})
-.catch(err => {
-    console.log("❌ Email error:", err);
 });
 
-}
+console.log("📧 Email function completed");
 
-    
+// Show confirmation page
+res.render("listings/booking.ejs", {
+    booking: newBooking,
+    listing
+});
+
+    }
 
 catch (err) {
         res.status(500).json({
