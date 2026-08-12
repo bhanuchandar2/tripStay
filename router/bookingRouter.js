@@ -53,17 +53,25 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
         await curruser.save();
 
         //email
-        await sendBookingEmail(curruser.email, {
-            username: curruser.username,
-            title: listing.title,
-            checkin: checkin,
-            checkout: checkout,
-            totalPrice: totalPrice
-        });
-
+        
         res.render("listings/booking.ejs", {
         booking: newBooking,
         listing})
+        res.render("listings/booking.ejs", {
+    booking: newBooking,
+    listing
+});
+
+sendBookingEmail(curruser.email, {
+    username: curruser.username,
+    title: listing.title,
+    checkin: checkin,
+    checkout: checkout,
+    totalPrice: totalPrice
+}).catch(err => {
+    console.log("Email failed:", err.message);
+});
+
 }
 
     
