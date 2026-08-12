@@ -1,28 +1,12 @@
-const nodemailer = require("nodemailer");
+const { Resend } = require("resend");
 
-const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
-    }
-});
-console.log("📧 EMAIL_USER exists:", !!process.env.EMAIL_USER);
-console.log("📧 EMAIL_PASS exists:", !!process.env.EMAIL_PASS);
-transporter.verify((error, success) => {
-    if (error) {
-        console.log("❌ SMTP connection failed:", error.message);
-    } else {
-        console.log("✅ SMTP connection successful");
-    }
-});
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 async function sendBookingEmail(to, bookingDetails) {
-    
     try {
-        const info = await transporter.sendMail({
-            from: process.env.EMAIL_USER,
-            to: to,
+        const { data, error } = await resend.emails.send({
+            from: "TripStay <onboarding@resend.dev>",
+            to: [to],
             subject: "Booking Confirmation - TripStay",
             html: `
                 <h2>Booking Confirmed 🎉</h2>
@@ -42,14 +26,20 @@ async function sendBookingEmail(to, bookingDetails) {
             `
         });
 
+        if (error) {
+            console.log("❌ Email failed:", error);
+            throw new Error(error.message);
+        }
+
         console.log("✅ Email sent successfully!");
-        console.log("Message ID:", info.messageId);
+        console.log("Message ID:", data.id);
+
+        return data;
 
     } catch (error) {
-    console.log("❌ Email sending failed!");
-    console.log(error);
-    throw error;
-}
+        console.log("❌ Email sending failed:", error.message);
+        throw error;
+    }
 }
 
 module.exports = sendBookingEmail;
