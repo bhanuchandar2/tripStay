@@ -57,14 +57,21 @@ router.post("/:id",isLoggedIn,redirectUrl,async (req, res) => {
         res.render("listings/booking.ejs", {
         booking: newBooking,
         listing})
-        sendBookingEmail(curruser.email, {
+        console.log("📧 Starting email...");
+console.log("📧 Sending to:", curruser.email);
+
+sendBookingEmail(curruser.email, {
     username: curruser.username,
     title: listing.title,
     checkin: checkin,
     checkout: checkout,
     totalPrice: totalPrice
-}).catch(err => {
-    console.log("Email failed:", err.message);
+})
+.then(() => {
+    console.log("📧 Email function completed");
+})
+.catch(err => {
+    console.log("❌ Email error:", err);
 });
 
 }
